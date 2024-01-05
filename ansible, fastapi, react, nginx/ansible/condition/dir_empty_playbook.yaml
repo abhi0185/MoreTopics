@@ -1,0 +1,18 @@
+
+- name: check registered variable for emptiness
+  hosts: all            # run for all hosts in inventory file
+
+  tasks:
+
+      - name: List contents of directory
+        ansible.builtin.command: ls test_dir            # use command to get command line output
+        register: contents              # register capture the output of a task into a variable
+
+      - name: Check contents for emptiness
+        ansible.builtin.debug:
+          msg: "Directory is empty"
+        when: contents.stdout == ""       
+
+
+# note: first command ls mydir run normally and store value in contents using register 
+# then if print msg value when below condition match

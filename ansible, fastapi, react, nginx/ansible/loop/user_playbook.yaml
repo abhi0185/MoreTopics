@@ -1,0 +1,19 @@
+---
+- name: Add several users
+  hosts: myhosts
+  gather_facts: false  # Disable gathering facts for localhost
+
+  tasks:
+    - name: Create multiple users
+      ansible.builtin.user:
+        name: "{{ item.name }}"
+        state: present
+        groups: "{{ item.groups }}"
+      loop:
+        - { name: 'testuser1', groups: 'wheel' }
+        - { name: 'testuser2', groups: 'root' }
+  vars:
+    ansible_python_interpreter: /usr/bin/python3  # Specify Python3 interpreter for localhost
+
+
+ # This should create the specified users (testuser1 and testuser2) with their respective groups on the localhost.

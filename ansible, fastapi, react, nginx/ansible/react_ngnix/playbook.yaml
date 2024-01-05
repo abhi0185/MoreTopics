@@ -1,0 +1,42 @@
+---
+- name: Deploy React build with Nginx
+  hosts: myhosts
+  become: true
+
+  vars:
+    ansible_python_interpreter: /usr/bin/python3  # Specify Python3 interpreter if not print it will use python2
+
+  tasks:
+    #- name: Update apt cache
+    #  apt:
+    #    update_cache: yes
+
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Copy React build to server
+      ansible.builtin.copy:
+        src: /home/abhisheky/practiceReact/reacttemp/build
+        dest: /var/www/html
+
+    - name: Create Nginx configuration for React app
+      template:
+        src: templates/nginx_config.j2
+        dest: /etc/nginx/sites-available/react_app
+      notify: Restart Nginx
+
+    - name: Enable Nginx site
+      file:
+        src: /etc/nginx/sites-available/react_app
+        dest: /etc/nginx/sites-enabled/react_app
+        state: link
+      notify: Restart Nginx
+
+  handlers:
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted
+

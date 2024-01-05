@@ -1,0 +1,148 @@
+
+#install :
+sudo apt update && sudo apt install nginx		# ngnix default website come running in http://localhost/
+nginx -v
+
+===========================
+
+sudo service nginx start/restart/stop/status
+sudo service nginx restart
+===========================
+
+# The first step is to unlink the default Nginx webpage using the following command:
+sudo unlink /etc/nginx/sites-enabled/default
+
+# Create file with ur domain_name like(abhiproject.com)
+# sudo nano /etc/nginx/sites-available/<domain_name>    OR
+sudo nano /etc/nginx/sites-available/abhiproject.com
+
+# Once you open the file, paste the following lines in your file by replacing the <domain_name> with your domain name:
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name  <domain_name>;
+
+    root /var/www/<domain_name>;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+
+mynote :     root /var/www/<domain_name>; should have index.html file in same path, i mean not inside /var/www/<domain_name>/build
+		else give path above as root /var/www/<domain_name>/build
+===========================
+
+The next step is to create a symbolic link to enable the Nginx site:
+
+# sudo ln -s /etc/nginx/sites-available/<domain_name> /etc/nginx/sites-enabled/	  OR
+sudo ln -s /etc/nginx/sites-available/abhiproject.com /etc/nginx/sites-enabled/		# u can check in location /etc/nginx/sites-enabled/
+
+===========================
+
+# Finally, test the configuration you've done so far using the following:
+sudo nginx -t
+
+===========================
+===========================
+
+# In the previous part, I explained how you can create a configuration file for Nginx which will point to the index file to serve the request.
+# But I'm yet to show you how you can create the index page.
+# First, create a directory for the Nginx web server:
+
+sudo mkdir /var/www/<domain_name>		# sudo mkdir /var/www/abhiproject.com
+
+# Now, create an index file inside the recently created directory:
+sudo nano /var/www/<domain_name>/index.html	# sudo nano /var/www/abhiproject.com/index.html
+
+# write any content in index.html to show in web
+<!doctype html>
+<html>
+<body>
+    <h1>Hello from sagar sharma!</h1>
+    <p>I hope this paragraph gets displayed on the test site (fingers crossed).</p>
+</body>
+</html>
+
+===========================
+===========================
+
+Done :
+http://localhost/		# This will show output in local system web
+http://abhiproject.com/		# This will show output in remote system web
+
+===========================
+Note: if in local http://localhost/ printing in brower but no result on using IP or domain
+example : if fail like below
+curl ngnix_check.com
+curl: (6) Could not resolve host: ngnix_check.com
+
+add entry in linux /etc/hosts like (if ifconfig is 172.21.192.253) add
+172.21.192.253  ngnix_check.com
+===========================
+
+============================================== Run Ngnix to open React Application ==============================================
+
+
+# Suppose your react App ready. First create build for ur react app using below command:
+# this will create a build directory inside in ur React App directories
+
+npm run build
+
+===========================
+# disable running ngnix as above and create/enable new domain as above
+# Same steps as above. Explain in short below
+
+sudo unlink /etc/nginx/sites-enabled/default or any other running domain
+
+sudo vi /etc/nginx/sites-available/ngnix_check.com	# create new web domain
+# pasted
+server {
+    listen 80;
+    listen [::]:80;
+    server_name  ngnix_check.com;
+
+    root /var/www/ngnix_check.com;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+
+sudo ln -s /etc/nginx/sites-available/ngnix_check.com /etc/nginx/sites-enabled/
+
+sudo nginx -t
+
+sudo mkdir ngnix_check.com
+
+=================================
+
+# Now Copy all ur React code build files inside /var/www/ngnix_check.com/
+
+sudo cp -r ./build/* /var/www/ngnix_check.com/		# build folder also contains index.html
+
+=================================
+
+# Restart ngnix
+sudo service nginx start/restart
+
+This will run React App
+http://localhost/		# This will show output in local system web
+http://ngnix_check.com		# This will show output in remote system web
+
+=================================
+
+==========================================================================================
+==========================================================================================
+Reverse proxy in ngnix means:
+Running ur react application in different port
+example : some set of command which helps to run ur react app. running on 3000 will run on some port like 80 also
+
+my note: similar work we done above. Took build code and run react app in 80 port
+
+==========================================================================================
+
+

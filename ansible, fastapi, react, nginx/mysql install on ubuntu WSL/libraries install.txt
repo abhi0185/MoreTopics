@@ -1,0 +1,20 @@
+need libraries :
+from flask import Flask, jsonify
+import mysql.connector
+
+--------------
+import mysql.connector need python 3.7 pip 3.7
+
+--------------
+
+ 2016  sudo apt update
+ 2017  sudo apt install python3.7
+ 2018  python3.7 --version
+ 2020  alias python='python3.7'
+ 2021  python3 --version
+ 2022  python --version
+ 2027  python3.7 -m pip install mysql-connector-python
+ 2028  python3.7 -m pip install Flask
+---------------
+
+alias python='python3.7'

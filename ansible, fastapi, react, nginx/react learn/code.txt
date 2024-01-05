@@ -1,0 +1,192 @@
+run react using command : npm start
+
+==========================
+
+
+Note : Need to remove comments to run below code. We can put comment inline in scripts
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>			// import need to write react code
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>		// import need to write react code
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>					// import need to write JSX
+  </head>
+  <body>
+
+    <div id="mydiv"></div>
+
+    <script type="text/babel">    
+
+      function Hello() {      
+      return(
+      <div>						// Calling <div> as we  wrap multiple elements inside a single parent element to return them from a component. 
+    	<button onClick={Hiii}>click</button>		// Calling Hiii on button click
+         <h1>Hello World!!</h1>
+      </div>
+	);}
+  
+      function Hiii() {
+    	alert("Hello World!");
+      }
+      
+      const container = document.getElementById('mydiv');
+      const root = ReactDOM.createRoot(container);	// The createRoot() function takes one argument, an HTML element. HTML element where a React component should be displayed.
+      root.render(<Hello />)				// Calling hello function
+    </script>
+
+  </body>
+</html>
+
+Note : instead of <div> we can also use <> like below
+
+ function Hello() {      
+      return(
+      <>				
+    	<button onClick={Hiii}>click</button>	
+         <h1>Hello World!!</h1>
+      </>
+	);}
+  
+      function Hiii() {
+    	alert("Hello World!");
+      }
+
+====================================================
+
+Simple code with HTML ->
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
+const myelement = (
+  <table>
+    <tr>
+      <th>Name</th>
+    </tr>
+    <tr>
+      <td>John</td>
+    </tr>
+    <tr>
+      <td>Elsa</td>
+    </tr>
+  </table>
+);
+
+const container = document.getElementById('root');
+const root = ReactDOM.createRoot(container);
+root.render(myelement);
+
+====================================================
+
+Components come in two types, Class components and Function components :
+
+class component ->
+
+Result Size: 729 x 587
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
+function Car(props) {
+  return <h2>I am a {props.color} Car!</h2>;
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Car color="red"/>);
+
+Function component ->
+
+function Car() {
+  return <h2>Hi, I am a Car!</h2>;
+}
+
+====================================================
+
+Fuction with arguments ->
+
+function Car(props) {
+  return <h2>I am a { props.brand }!</h2>;
+}
+
+function Garage() {
+  return (
+    <>
+      <h1>Who lives in my garage?</h1>
+      <Car brand="Ford" />
+    </>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Garage />);
+
+====================================================
+
+Form Submit ->
+
+import { useState } from "react";
+import ReactDOM from 'react-dom/client';
+
+function MyForm() {
+  const [name, setName] = useState("");		// using the useState hook. It sets name as an empty string and provides a function setName to update its value.
+
+  const handleSubmit = (event) => {
+    event.preventDefault();			// It prevents the default form submission behavior (page reload) using event.preventDefault()
+    alert(`The name you entered was: ${name}`);
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>Enter your name:
+        <input 
+          type="text" 
+          value={name}
+          onChange={(e) => setName(e.target.value)}	// The onChange event updates the name state whenever the input changes.
+        />
+      </label>
+      <input type="submit" />
+    </form>
+  )
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<MyForm />);
+
+====================================================
+useEffect ->
+This is to eliminate the side effects of using class-based components. For example, tasks like updating the DOM, 
+fetching data from API end-points, setting up subscriptions or timers, etc can lead to unwarranted side effects. 
+Since the render method is too quick to produce a side-effect, one needs to use life cycle methods to observe the side effects. 
+
+
+//HookCounterOne.js File
+import { useState, useEffect } from "react";
+ 
+function HookCounterOne() {
+    const [count, setCount] = useState(0);
+ 
+    useEffect(() => {
+        document.title = `You clicked ${count} times`;
+    }, [count]);
+ 
+    return (
+        <div>
+            <button onClick={() => setCount((prevCount) => prevCount + 1)}>
+                Click {count} times{" "}
+            </button>
+        </div>
+    );
+}
+export default HookCounterOne;
+
+====================================================
+
+
+
+
+
+
+
+
+
+

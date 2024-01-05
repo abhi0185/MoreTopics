@@ -1,0 +1,13 @@
+- name: My first play
+  hosts: myhosts
+  gather_facts: false  # Disable gathering facts for localhost
+
+  tasks:
+   - name: Ping my hosts
+     ansible.builtin.ping:
+
+   - name: Print message
+     ansible.builtin.debug:
+      msg: Hello world
+  vars:
+    ansible_python_interpreter: /usr/bin/python3  # Specify Python3 interpreter if not print it will use python2

@@ -1,0 +1,53 @@
+mysql  Ver 8.0.33 on Ubuntu 18.04 
+(WSL sytem was creating issue in starting mysql as systemctl(we didnt start also) is stopped by default to make system run fast)
+
+
+sudo apt update
+sudo apt install mysql-server
+sudo service mysql start
+sudo service mysql status
+sudo mysql -u root -p
+
+if permission issue :
+
+sudo mysqld --initialize
+sudo mysqld_safe --skip-grant-tables &
+mysql -u root -p
+
+===============
+for now user and password set
+user  : root
+pswrd : root
+
+
+
+GRANT CREATE USER ON *.* TO 'root'@'172.18.0.1' WITH GRANT OPTION;
+
+
+FLUSH PRIVILEGES;
+===================================================================================================
+===================================================================================================
+
+sudo apt install libmysqlclient-dev -y
+sudo apt install libmariadb-dev-compat -y
+sudo apt install libmariadbclient-dev -y
+
+
+/etc/mysql/mysql.conf.d/mysqld.cnf
+
+SHOW GLOBAL VARIABLES LIKE 'port'
+
+
+=================================
+
+sudo touch /var/run/mysqld/mysqld.sock
+sudo chmod -R 777 /var/run/mysqld/
+----
+sudo mysqld --initialize
+sudo mysqld_safe --skip-grant-tables &
+mysql -u root -p
+sudo chmod -R 777 /var/run/mysqld/
+
+
+=================================
+mysql -u username -p -e "STATUS;"

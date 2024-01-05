@@ -1,0 +1,19 @@
+from index.js file
+
+
+<Route path="/" element={<Layout />}>
+
+This route specifies that whenever the URL path matches the root path (/), it will render the Layout component.
+It's like a layout or a container component that surrounds other nested routes or components.
+<Route index element={<Home />} />
+
+This route is a child route nested under the previous Layout component (assuming the first one was a layout).
+It uses the index property, which means it represents the default content to render when its parent route (in this case, the root path /) is matched. So, when the root path is accessed, it will render the Home component inside the Layout component.
+<Route path="blogs" element={<Blogs />} />
+
+This route is also a child route under the Layout component.
+It specifies that when the URL path matches /blogs (relative to the parent path, which might be / if it's a child of the root), it will render the Blogs component.
+
+
+============================================
+

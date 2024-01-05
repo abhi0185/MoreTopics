@@ -1,0 +1,29 @@
+- name: Use of variable and condition
+  hosts: myhosts
+  tasks:
+    - name: Run the command if "foo" is defined
+      ansible.builtin.shell: echo "I've got '{{ foo }}' and am not afraid to use it!"
+      when: foo is defined
+
+    - name: Fail if "bar" is undefined
+      ansible.builtin.fail: msg="Bailing out. This play requires 'bar'"
+      when: bar is undefined
+
+#   vars:
+#    foo: "hello abhi"
+#    bar: "barrrrr"
+
+
+
+# Note: if you define or uncomment bar or foo it will give output according to that
+
+      #Note ways to paas vars:
+      #1: same as above using vars:
+      #2: paas in inventory like
+      #         [myhosts]
+      #         hostname ansible_ssh_host=192.168.1.100
+      #         [myhosts:vars]
+      #         foo=hello
+      #3: paas runtine like:
+      #         ansible-playbook -i inventory.ini playbook.yaml --extra-vars "foo=hello"
+

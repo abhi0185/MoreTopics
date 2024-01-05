@@ -1,0 +1,5 @@
+# how to run ansible playbook:
+ansible-playbook -i inventory playbook_name.yaml
+
+# using ansible we can automate/run scripts on multiple server of same or 
+  different types like ubuntu, centos etc. (mention in inventory file)

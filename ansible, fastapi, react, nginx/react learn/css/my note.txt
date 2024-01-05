@@ -1,0 +1,1 @@
+Create the CSS module with the .module.css extension, example: my-style.module.css

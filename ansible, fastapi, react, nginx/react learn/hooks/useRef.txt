@@ -1,0 +1,79 @@
+The useRef Hook allows you to persist values between renders.
+It can be used to store a mutable value that does not cause a re-render when updated.
+
+my note : It is using like if any value changes other value also change which is getting reference from using useRef
+
+Example :
+
+==============================================
+
+
+import { useState, useEffect, useRef } from "react";
+import ReactDOM from "react-dom/client";
+
+export default function App() {
+  const [inputValue, setInputValue] = useState("");
+  const count = useRef(0);
+
+  useEffect(() => {
+    count.current = count.current + 1;
+  });						// not used [] means not only in starting but it will run in every render
+
+  return (
+    <>
+      <input
+        type="text"
+        value={inputValue}			// same value in text and inputValue
+        onChange={(e) => setInputValue(e.target.value)}		// using e.target.value if any value change it will set in inputValue using setInputValue
+      />
+      <h1>Render Count: {count.current}</h1>	// mynote: its value was 1 in starting as useEffect run first so when u enter one letter, count value was already one so print 1
+    </>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+
+
+==============================================
+
+The useRef Hook can also be used to keep track of previous state values.
+This is because we are able to persist useRef values between renders.
+
+import { useState, useEffect, useRef } from "react";
+import ReactDOM from "react-dom/client";
+
+export default function App() {
+  const [inputValue, setInputValue] = useState("");
+  const previousInputValue = useRef("");
+
+  useEffect(() => {
+    previousInputValue.current = inputValue;
+  }, [inputValue]);			// runs everytime whenver any change happens
+
+  return (
+    <>
+      <input
+        type="text"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+      />
+      <h2>Current Value: {inputValue}</h2>
+      <h2>Previous Value: {previousInputValue.current}</h2>	// this will hold previous value
+    </>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+
+==============================================
+
+
+
+
+
+
+
+
+

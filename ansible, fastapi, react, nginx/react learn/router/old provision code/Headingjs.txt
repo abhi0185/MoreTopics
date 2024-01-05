@@ -1,0 +1,18 @@
+
+import React from "react";
+import { Link  } from "react-router-dom";
+import Regions from './Regions';
+import FeatureCluster from './FeatureCluster';
+
+function Heading() {
+	return (
+	<div>
+		<h1>URL Page</h1>
+		<nav>
+	<Link to="/region">{<Regions />}</Link>
+	<Link to="/featurecluster">{<FeatureCluster />}</Link>
+	</nav>
+		</div>);
+}
+
+export default Heading;

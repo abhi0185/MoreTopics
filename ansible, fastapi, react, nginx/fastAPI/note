@@ -1,0 +1,44 @@
+install
+
+pip3 install fastapi uvicorn
+or
+python3.7 -m pip install fastapi uvicorn	# as python version should above or equal 3.7
+------------------------------
+FastAPI framework mostly similar as RESTApi but more faster
+it uses Asynchronous(ASGI) method, where RESTApi uses Synchronous(WSGI) method
+we can write api using FastAPI framework and run server using uvicorn(which can run api in asynchronous)
+FastAPI provide support of swagger docs(use as postman. it creates docs for you)
+FastAPI have pydantic library which we can use for data validation and settings management.(no need to manually validate post request data)
+
+------------------------------
+Synchronous / Asynchronous
+
+Synchronous : 	will work together and wait for other task to finish their work to move forward
+Asynchronous : 	will work seperately and dont wait for other task to move forward
+
+-----------------------------
+To run a FastAPI application with Uvicorn, 
+you typically create your FastAPI application in a Python file and then use Uvicorn to serve it. 
+For example, if you have a file named main.py containing your FastAPI application, 
+you can use Uvicorn to serve it by running the following command in your terminal:
+
+uvicorn main:app --reload
+or
+uvicorn main:app --reload --port 8001					# to get same result in localhost
+or
+uvicorn fastApi_provision:app --reload --host 0.0.0.0 --port 8001	# to get same result in ipaddress also 
+
+-------------------------------
+Swagger docs:
+Once you run application, by adding /docs after http://127.0.0.1:8001/ you will get swagger docs.
+for example http://127.0.0.1:8001/docs or http://127.0.0.1:8001/redoc
+
+--------------------------------
+
+
+
+
+
+
+
+

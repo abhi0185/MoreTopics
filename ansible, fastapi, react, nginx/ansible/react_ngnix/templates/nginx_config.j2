@@ -1,0 +1,12 @@
+server {
+    listen 80;
+    server_name 172.21.206.100;
+
+    root /var/www/html/build;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
+
