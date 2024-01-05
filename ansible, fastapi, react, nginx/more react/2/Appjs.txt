@@ -1,0 +1,33 @@
+import React from "react";
+
+function FetchAPI() {
+          //Get Method
+          const apiGet = () =>
+        {
+              fetch("http://localhost:8000/api/v1_0/regions")
+                    .then((response) => response.text())
+                    .then((text) => {
+                    console.log(text);
+
+                     });
+                      };
+
+        const apiPut = () =>
+                        {
+                      fetch("http://localhost:8000/api/v1_0/regions")
+                           .then((response) => response.text())
+                            .then((text) => {
+                           console.log(text);
+                         });
+                          };
+
+                   return (
+                           <div>
+                              Region API <br />
+                               <button onClick={apiGet}>Fetch API</button>
+                           <button onClick={apiPut}>Update API</button>
+                           <br />
+                           </div>
+                           );
+                                     }
+              export default FetchAPI;

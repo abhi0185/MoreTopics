@@ -1,0 +1,17 @@
+import {
+	    Route
+} from "react-router-dom";
+import Heading from "./Heading"
+import Regions from './Regions';
+import FeatureCluster from './FeatureCluster';
+  
+function App() {
+	    return (
+			<div>
+              <Heading />
+			  <Route path="/region"><Regions /></Route>
+			  <Route path="/featurecluster"><FeatureCluster /></Route>
+			  </div>);
+}
+  
+export default App;

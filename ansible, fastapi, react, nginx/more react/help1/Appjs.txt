@@ -1,0 +1,19 @@
+import {
+        BrowserRouter as Router, Routes, Route
+} from "react-router-dom";
+import Heading from "./Heading"
+
+function App() {
+            return (
+        <Router>
+            <div>
+                    <Routes>
+                        <Route path="/" element={<Heading />}>
+                            </Route>
+                    </Routes>
+            </div>
+        </Router>
+);
+}
+
+export default App;

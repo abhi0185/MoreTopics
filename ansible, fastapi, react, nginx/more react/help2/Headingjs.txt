@@ -1,0 +1,19 @@
+
+import React from "react";
+import { NavLink  } from "react-router-dom";
+
+function Heading() {
+	return (
+	<div>
+		<ul>
+			<li>
+				<NavLink to="/region">Region</NavLink>
+			</li>
+			<li>
+				<NavLink to="/featurecluster">Feature Cluster</NavLink>
+			</li>
+			</ul>
+		</div>);
+}
+
+export default Heading;

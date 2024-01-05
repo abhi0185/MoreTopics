@@ -1,0 +1,409 @@
+
+===========================
+https://confluence-itops.hcltechswops.com/pages/resumedraft.action?draftId=40731043&draftShareId=2ae38694-e063-4b66-9c3b-f970ecb7f132&
+===========================
+
+
+http://admin:admin@localhost:8000/api/v1_0/regions
+
+http://@localhost:8000/api/v1_0/regions
+
+
+import requests
+basicAuthCredentials = ('admin', 'admin') 
+response = requests.get('http://@localhost:8000/api/v1_0/regions', auth=basicAuthCredentials)
+response.status_code
+response.json()
+
+
+def provision_features(context):
+elif feature.status == FeatureStatuses.pending_decommission:				->	workflows
+            decommission_feature(env, feature, context.scenario_name)
+
+
+================================================
+install node 16 =>
+
+https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04
+--> use this - Installing Node Using the Node Version Manager
+
+=================================
+
+https://www.pluralsight.com/guides/how-to-build-a-basic-form-calculator-in-reactjs
+	npx create-react-app react-form-calculator
+
+
+========================
+react is single page library... means it will not reload page when going from one page to another.
+can break whole side or code in different components
+have lot of hooks or predefine things to help make code easy which is not possible easily through html and all
+
+npm works as pip in python
+
+npx is as a type of npm but it dont download any package in system. it run any package as runtime and stops when u come out. 
+helps to run any command or task one time.
+
+web page code can be broken into components which make code easy to change particular components and easy to access.
+for component creation we create a folder with any name and create file inside it(to perform seperate task). Later import these file from app.js
+
+with same wifi connection if give address http://192.168.0.103:3000 it will open react default app in any device.
+index.js call app.js as entry point. App.js perform all main function.
+App.js use Jsx(javascript server extension) which helps to insert html with javascript in App.js
+App.js code need to wrapper everytime, if dont have anything then just wrap them in <> </> brackets.
+
+====================
+help code :-
+https://remotestack.io/react-js-get-data-with-fetch-api-and-rest-api-tutorial/
+-----------
+index.js 
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+
+=========
+App.js
+
+import React, { useState, useEffect } from "react";
+
+function FetchAPI() {
+
+          //Get Method
+          const apiGet = () => {
+              fetch("http://localhost:8000/api/v1_0/regions")
+                    .then((response) => response.text())
+                    .then((text) => {
+                    console.log(text);
+
+                     });
+                      };
+                    return (
+                                   <div>
+                                 My API <br />
+                          <button onClick={apiGet}>Fetch API</button>
+                       <br />
+                              </div>
+                              );
+                             }
+              export default FetchAPI;
+
+===========================
+
+index.js 
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import Heading from './Heading';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+
+============================
+
+
+debugging :
+https://raygun.com/blog/react-debugging-guide/
+
+=============================
+Installation Reactjs on Windows:
+
+Install Node.js installer for windows. Use the link 
+Node.js (nodejs.org)
+
+Installation Reactjs on Ubuntu:
+
+Install Node.js for Ubuntu suing below command :
+
+sudo apt install npm
+sudo npm -g install create-react-app
+
+
+
+
+Debug React using the browser inspector
+
+The browser inspector contains many powerful tools, including a debugger. It can be activated from the code by using a debugger; statement. Writing debugger; is the same as if you were adding a breakpoint to your code using the browser. Here’s what debugging using the browser inspector looks like:
+
+To get started with this, do the following:
+
+Modify the code above so that you have a debugger; line within the Counter function. Place it after the line with const, for example.
+Open the code inspector of your browser, if it isn’t open already.
+Refresh the page.
+Note that instead of running the application, the browser will stop the execution. You should see Paused in debugger or similar wording. Also, the inspector should point to your code now.
+
+Now that the application is in a frozen state, you can inspect it in various ways. Consider the following examples:
+
+Hovering over an already executed statement should show you the current value.
+You can step through statements one by one and dive into the execution of functions if you prefer.
+The browser shows you the call stack, which reveals how the code arrived in the spot you’re currently debugging.
+How to debug React using Console statements
+
+One of the classic ways to debug an application is to log it. In the web, you can achieve this by using console.log, console.warn, console.error, and similar statements. Then, to examine application state, for example, you would do console.log(count). You’ll then see the result in the browser inspector. Developers use this method because it’s fast to implement and it relies on your reasoning skills. 
+
+Logging to the Console
+
+First, if you’ve never seen console.log() before, here’s a quick example and a few instructions for how to use it within Google Chrome (other browsers should be similar). All it does is print a value to the console.
+
+In the example above, we log “Hello World”.
+
+We’ll now see how to access this variable in the console.
+
+right-click on the window. Then, click on “Inspect”. Within the window that pops up on the right side of the screen, click on the “Console” tab.
+
+As we can see, “Hello World” is printed to the console on the right. 
+
+
+
+
+Difference between React and Angular2.0
+
+ReactJS
+
+	
+
+Angular
+
+
+React is a Library	Angular is a Framework
+React has only the View layer.	Angular has complete MVC functionality.
+React handle rendering on the server-side.	Angular JS render on the client-side, but Angular 2 and above render on the server-side.
+React has many ways to do the same thing, which makes it confusing, and there are no best practices defined.	Angular is easily scalable, and it has defined boundaries which makes deciding the best way to do a certain thing easy.
+React is very flexible.	Angular has great support for 3rd party libraries.
+React is easier to use, and it’s the most popular framework on the web. Reusable code is easy to find for React.	Angular is catching up.
+React Native, which is a React type to build mobile applications, is faster and more stable.	Ionic, Angular’s mobile native app, is relatively less stable and slower.
+In React, HTML is written in JS, which can be confusing.	Angular follows the template approach for HTML, which makes code shorter and easy to understand.
+React is tedious at times.	Development time in Angular is fast.
+React’s code size is smaller than Angular. Optimizing code is more flexible in React.	Angular being a framework contains a lot of code out of the box, which is not much of use.
+Debugging code is easier to React. It shows an error code with a line number,	Angular only breaks when it runs on a browser which makes it difficult to debug.
+In React, data flows only in one way and hence debugging is easy.	In Angular, data flows both ways, i.e. it has two-way data binding between children and parent and hence debugging is often difficult.
+Lot more people use React than Angular. The community size of React is bigger than Angular on both Github and StackOverflow.	Angular is relatively new, and a lot of people who earlier used React and tried Angular found React more convenient.
+React offers a very good tutorial,  however not so well-structured as Angular, there are additional links to other resources such as conferences, videos, tools, and blogs that provide sufficient information to developers and new beginners.	Angular has well-structured documentation that shows its architecture and the different sub-parts involved like Modules, Templates, Components, Data binding, Dependency, Directives, injection etc. and the way they interact with each other.
+
+
+
+
+Conclusion :
+
+Both Angular2 vs ReactJS frameworks have great functionality and support. It is difficult to conclude which one is better. Both have their flavor, and there are a lot of people who can put forward great arguments in support of each of these technologies. Still, there could be few ground rules that can be set to decide which of Angular2 vs ReactJS should be used. Most people would swear for
+
+React as it is in the market for a long time, almost all Angular developers might have used React sometime or other, and almost everyone recommends that one should start from React at least. Meaning, for beginners, React is more suitable. Hence, angular becomes complicated and should be left for more advanced users or once someone becomes quite familiar with React.
+
+React is easy, need less code to write. 
+This is a library so less rigid.
+Less structured and requires other libraries for any other task like routing etc.
+
+Angular difficult to learn easy to use, need more code to write like typescripts and all. 
+This is a framework so more rigid
+Fully structured and don't need extra libraries as all are inbuild.
+
+
+
+
+
+
+
+
+===========================
+https://confluence-itops.hcltechswops.com/pages/resumedraft.action?draftId=40731043&draftShareId=2ae38694-e063-4b66-9c3b-f970ecb7f132&
+===========================
+
+
+
+
+
+
+
+
+class App extends React.Component {
+   
+    constructor(props) {
+       super(props);
+  
+       this.state = {
+           items: [],
+           DataisLoaded: false
+       };
+   }
+   
+    componentDidMount() {
+        fetch("http://localhost:8000/api/v1_0/regions")
+           .then((res) => res.json())
+           .then((json) => {
+            this.setState({
+                items: json,
+                DataisLoaded: true
+              });
+          })
+  }
+  render() {
+      const { DataisLoaded, items } = this.state;
+     if (!DataisLoaded) return <div>
+          <h1> Pleses wait some time.... </h1> </div> ;
+          return (
+      <div className = "App">
+          <h1> Fetch data from an api in react </h1>  {
+              items.map((item) => ( 
+              <ol key = { item.id } >
+                  Full_Name: { item.name }
+                  </ol>
+              ))
+          }
+      </div>
+  );
+ }
+ }
+   
+export default App;
+
+
+======================================================
+Difference React vs Angular =>
+
+Library vs. Framework ->
+React is a library. Angular is a framework. 
+
+
+React is easy, need less code to write. 
+This is a library so less rigid.
+Less structured and requires other libraries for any other task like routing etc.
+
+Angular diffcult to learn easy to use, need more code to write like typescripts and all. 
+This is a framework so more rigid
+Fully structured and dont need extra libraries as all are inbuild.
+
+
+
+=====
+create get button for feature cluster
+creat update button, change url accordingly
+get data in ui
+change url
+========
+
+
+https://www.appsloveworld.com/fetch-data-from-api-and-display-in-table-react-js
+
+
+===========
+router install =>
+
+npm install react-router-dom
+
+if face proxy issue in installation
+remove proxy lines from .npmrc
+https://stackoverflow.com/questions/23193614/npm-err-network-getaddrinfo-enotfound
+==================
+
+https://stackoverflow.com/questions/58116211/how-to-redirect-to-another-page-on-button-click-in-reactjs
+
+
+
+import React, { useState, useEffect } from "react"
+
+const EmployeelistFun = () => {
+    const [employeeslist, setemployees] = useState(null)
+        useEffect(() => {
+            getemployees()}, [])
+        const getemployees = () => {
+            fetch("http://localhost:8000/api/v1_0/regions")
+                .then(res => res.json())
+                .then(
+                (result) => {
+                setemployees(result['regions'])
+                },
+                (error) => {
+                setemployees(null);
+                    })}
+
+                const apiUpdate = () => {
+                    fetch("http://localhost:8000/api/v1_0/regions")
+                        .then(res => res.json())
+                        .then(                 
+                            (result) => {
+                            console.log(result)},
+                                (error) => {
+                                setemployees(null);})}
+
+                if (!employeeslist) return (<div>No Record Found</div>)
+                        return ( <div style={{width: "100%"}}>
+                            <h2>Employees List Funcational Component </h2>
+                            <table className="table" >
+                            <th>Region Code</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {employeeslist.map(emp => (
+                            <tr>
+                                <td>{emp.code}</td>
+                                <td>{emp.name}</td>
+                                <td>{emp.description}</td>
+                                <td>{emp.is_active.toString()}<button onClick={apiUpdate}>Update API</button></td>
+                                </tr>
+                                ))}
+                                    </tbody>
+                                    </table>
+                                           </div>)
+                                            }
+            export default EmployeelistFun;
+
+
+==============================
+
+ headers: {
+                                  "Content-Type": "application/json;",
+                                        "Access-Control-Allow-Origin": "*",
+
+                                        "Access-Control-Allow-Credentials": "true",
+
+                                        "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT,PATCH"
+                                }
+
+
+
+
+====================
+
+
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "start": "cross-env PORT=8000 react-scripts start"
+  },
+  "eslintConfig": {
+    "extends": [
+
+
+======================
+
+
